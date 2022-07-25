@@ -8,8 +8,8 @@ function shallowEquals (firstObj, secObj) {
   return true
 }
 
-shallowEquals({ a: 1, b: "2" }, { a: 1, b: "2" }); // true
-shallowEquals({ a: 0 }, { a: undefined }); // false
-shallowEquals({ a: {} }, { a: {} }); // false
-shallowEquals({ a: [] }, { a: [] }); // false
-shallowEquals({ a: () => {} }, { a: () => {} }); // false
+console.log(shallowEquals({ a: 1, b: "2" }, { a: 1, b: "2" })); // true
+console.log(shallowEquals({ a: 0 }, { a: undefined })); // false
+console.log(shallowEquals({ a: {} }, { a: {} })); // false
+console.log(shallowEquals({ a: [] }, { a: [] })); // false
+console.log(shallowEquals({ a: () => {} }, { a: () => {} })); // false
