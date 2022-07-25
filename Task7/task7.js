@@ -92,7 +92,6 @@ class MySet {
     }
 
     return false;
-    // return this.mySetValues().includes(value);
   }
 
   values() {
@@ -102,5 +101,12 @@ class MySet {
 
 
 const mySet = new MySet([1, 2, 3, 4, 4, 5, 5]);
-console.log((new Set([1, 2, 3, 4, 4, 5, 5])));
-console.log(new Set([1, 2, 3, 4, 4, 5, 5]))
+console.log(mySet);
+mySet.add(6);
+console.log(mySet);
+mySet.delete(3);
+console.log(mySet);
+console.log(mySet.entries());
+console.log(mySet.has(4));
+mySet.clear()
+console.log(mySet);
