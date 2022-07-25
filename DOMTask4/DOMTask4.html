@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<form onsubmit="calculate(event)">
+  <p>Input radius value and get the volume of a sphere</p>
+  Radius:<br> <input name="radius" type="text"><br>
+  Volume:<br> <input disabled name="volume" type="text"><br>
+  <button>Calculate</button>
+</form>
+<script>
+  function calculate ( event ) {
+    event.preventDefault();
+    const form = event.target;
+    const radiusInput = [...form].find(input => input.name === 'radius');
+    const volumeInput = [...form].find(input => input.name === 'volume');
+    volumeInput.value = (4 / 3 * 3.14 * Math.pow(radiusInput.value, 3)).toFixed(2)
+  }
+</script>
+</body>
+</html>
