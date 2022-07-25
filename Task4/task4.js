@@ -1,4 +1,4 @@
-export default function (array, callback) {
+function customMap (array, callback) {
   const newArray = [];
 
   array.forEach((item) => {
@@ -7,3 +7,5 @@ export default function (array, callback) {
 
   return newArray;
 }
+
+console.log(customMap([1, 2, 3, 4, 5], (item2) => item2 + 2) )
