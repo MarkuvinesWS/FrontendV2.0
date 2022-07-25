@@ -1,5 +1,6 @@
-export default function (path, value, obj) {
+export default function pathGen (path, value, obj) {
   let object = {...obj};
+
   path.reduce((prev, current, currentIndex) => {
     if (currentIndex === path.length - 1) {
       prev[current] = value
@@ -8,5 +9,6 @@ export default function (path, value, obj) {
     prev[current] = {};
     return prev[current];
   }, object )
+
   return object;
 }
