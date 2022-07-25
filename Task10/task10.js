@@ -3,7 +3,8 @@ function asyncTimeout (timeout) {
 }
 
 function promiseStack (callbacksArray) {
-	const initialValue = new Promise((resolve) => {resolve()});
+	const initialValue = Promise.resolve();
+
 	callbacksArray.reduce((prev, current) => prev.then(current), initialValue)
 }
 
