@@ -10,3 +10,5 @@ const fillUser = pipe (
   (user) => ({ ...user, age: 29 }),
   (user) => ({ ...user, city: "Boston" }),
 );
+
+console.log(fillUser({name: 'Sam'}))
