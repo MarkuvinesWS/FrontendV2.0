@@ -1,4 +1,4 @@
-export default function pathGen (path, value, obj) {
+function pathGen (path, value, obj) {
   let object = {...obj};
 
   path.reduce((prev, current, currentIndex) => {
@@ -12,3 +12,5 @@ export default function pathGen (path, value, obj) {
 
   return object;
 }
+
+console.log(pathGen(['user', 'name'], 'Sam', {}))
