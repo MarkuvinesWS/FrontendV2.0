@@ -6,9 +6,8 @@ class MySet {
     array.forEach((value) => {
       if (Object.values(this).some((valueOfThis) => valueOfThis === value)) return;
       this[this.getLastKey() + 1] = value;
-      this.size = this.mySetKeys().length;
     });
-
+    this.size = this.mySetKeys().length;
     this[Symbol.iterator] = function () {
       let nextIndex = 0;
       const entries = this.mySetEntries();
@@ -92,3 +91,4 @@ class MySet {
 
 
 const mySet = new MySet([ 1, 2, 3, 4, 5 ]);
+console.log(mySet.size)
