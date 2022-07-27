@@ -1,5 +1,6 @@
 class MySet {
   constructor(array) {
+    Object.defineProperty(this, 'size', { enumerable: false, writable: true })
     if (!Array.isArray(array)) throw new Error('Not an array');
 
     array.forEach((value) => {
@@ -15,29 +16,23 @@ class MySet {
       return {
         next: function () {
           return nextIndex < entries.length ?
-            {value: {value: entries[nextIndex][1], key: entries[nextIndex++][0]}, done: false} :
-            {done: true}
+            { value: {value: entries[nextIndex][1], key: entries[nextIndex++][0]}, done: false } :
+            { done: true }
         }
       }
     };
   }
 
   mySetEntries() {
-    const tempObj = {...this};
-    delete tempObj.size;
-    return Object.entries(tempObj);
+    return Object.entries(this);
   }
 
   mySetValues() {
-    const tempObj = {...this};
-    delete tempObj.size;
-    return Object.values(tempObj);
+    return Object.values(this);
   }
 
   mySetKeys() {
-    const obj = Object.keys(this);
-    obj.pop();
-    return obj;
+    return Object.keys(this);
   }
 
   getLastKey() {
@@ -55,21 +50,17 @@ class MySet {
 
   clear() {
     for (const key in this) {
-      if (key === 'size') {
-        this.size = 0;
-        return;
-      }
       delete this[key]
     }
+    this.size = 0;
   }
 
   delete(value) {
-    const entries = Object.entries(this);
-    entries.pop();
+    const entries = this.mySetEntries();
     entries.forEach((item, index) => {
       if (value === item[1]) {
         delete this[item[0]];
-        for (let i = index; i < this.mySetKeys().length - 1; i++) {
+        for (let i = index; i < this.mySetKeys().length; i++) {
           this[i] = this[i + 1];
           delete this[i + 1]
         }
@@ -100,13 +91,4 @@ class MySet {
 }
 
 
-const mySet = new MySet([1, 2, 3, 4, 4, 5, 5]);
-console.log(mySet);
-mySet.add(6);
-console.log(mySet);
-mySet.delete(3);
-console.log(mySet);
-console.log(mySet.entries());
-console.log(mySet.has(4));
-mySet.clear()
-console.log(mySet);
+const mySet = new MySet([ 1, 2, 3, 4, 5 ]);
