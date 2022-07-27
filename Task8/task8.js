@@ -3,7 +3,6 @@ function arrayToObject( array ) {
   for (const item of array) {
     finalObject[item.name] = item.value
   }
-  console.log(finalObject)
   return finalObject;
 }
 
@@ -13,7 +12,7 @@ function objectToArray(object) {
   for (const [name, value] of objEntries) {
     finalArray.push({name, value})
   }
-  console.log(finalArray);
+  return finalArray
 }
 
 
@@ -22,4 +21,6 @@ const array = [
   { name: "width", value: 100 },
   { name: "height", value: 50 },
 ]
-objectToArray(arrayToObject(array))
+
+console.log(arrayToObject(array));
+console.log(objectToArray(arrayToObject(array)));
