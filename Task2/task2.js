@@ -1,9 +1,12 @@
-function shallowEquals (firstObj, secObj) {
-  const firstObjKeys = Object.keys(firstObj);
+function shallowEquals (sourceObj, targetObj) {
+  const sourceObjKeys = Object.keys(sourceObj);
+  const targetObjKeys = Object.keys(targetObj);
 
-  for (let key of firstObjKeys) {
-    if (!secObj.hasOwnProperty(key)) return false
-    if (firstObj[key] !== secObj[key]) return false
+  if (sourceObjKeys.length !== targetObjKeys.length) return false
+
+  for (const key of sourceObjKeys) {
+    if (!targetObj.hasOwnProperty(key)) return false
+    if (sourceObj[key] !== targetObj[key]) return false
   }
   return true
 }
